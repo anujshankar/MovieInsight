@@ -7,8 +7,7 @@ class Movie extends Component {
     const theme = {
       backgroundColor: this.props.theme,
       width: 20,
-      height: 290,
-      marginBottom: 10
+      height: 290
     }
 
     const actorsList = this.props.actors.map((item) => {

@@ -1,0 +1,23 @@
+.app{
+  background-color: #F8F8FF;
+  margin:auto;
+  width: 800px;
+}
+
+.header{
+  text-align:center;
+}
+
+.filter{
+  border: 1px solid black;
+  padding: 10px;
+}
+
+.filter-actor{
+  font-size: 20px;
+  text-align: center;
+}
+
+.filter-actor select{
+  margin: 15px;
+}

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import MovieList from './MovieList.jsx'
 import loader from '../images/loader.svg'
+import '../css/app.css'
 const axios = require('axios')
 
 class App extends Component {
@@ -14,7 +15,7 @@ class App extends Component {
   }
 
   filterUpdate (e) {
-    this.setState({filter: e.target.value})
+    this.setState({ filter: e.target.value })
   }
 
   render () {
@@ -23,23 +24,21 @@ class App extends Component {
     }
 
     const actorDropDownData = this.state.actors.map((item, index) => {
-      return (<option
-                key={index}
-                value={item}>
-              {item}
-            </option>)
+      return (<option key={index} value={item}> {item} </option>)
     })
 
     return (
-      <div className='App'>
-        <h1> This Week Movies </h1>
+      <div className='app'>
+        <h1 className='header'> This Week Movies </h1>
         <div className='filter'>
-           Filter by Actors
+          <div className='filter-actor'>
+            Filter by Actors
            <select onChange={this.filterUpdate.bind(this)}>
-             <option value='All'>All</option>
-             {actorDropDownData}
-          </select>
-          <MovieList filter={this.state.filter} movies={this.state.movies}/>
+              <option value='All'>All</option>
+              {actorDropDownData}
+            </select>
+          </div>
+          <MovieList filter={this.state.filter} movies={this.state.movies} />
         </div>
       </div>
     )
@@ -55,7 +54,7 @@ class App extends Component {
             actorsArray.push(actor)
           })
         })
-        let uniqueActors = [...new Set(actorsArray)]
+        const uniqueActors = [...new Set(actorsArray)]
         this.setState({ movies: res.data, actors: uniqueActors })
       })
   }
