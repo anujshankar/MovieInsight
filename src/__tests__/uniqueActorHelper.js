@@ -68,3 +68,15 @@ describe('unique actor Helper with valid input', () => {
     expect(getUniqueActors(data)).to.eqls(expectedOutput)
   })
 })
+
+describe('unique actor Helper with invalid input', () => {
+  it('should return an error when string is passed', () => {
+    const expectedOutput = 'Data should be an Array of Objects'
+    expect(getUniqueActors('')).to.eqls(expectedOutput)
+  })
+
+  it('should return an error when empty array is passed', () => {
+    const expectedOutput = 'Data Array of objects is empty'
+    expect(getUniqueActors([])).to.eqls(expectedOutput)
+  })
+})
