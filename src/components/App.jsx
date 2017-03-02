@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import MovieList from './MovieList.jsx'
+import loader from '../images/loader.svg'
 const axios = require('axios')
 
 class App extends Component {
@@ -17,6 +18,10 @@ class App extends Component {
   }
 
   render () {
+    if (this.state.movies.length === 0) {
+      return (<img src={loader} className="App-loader" alt="loader" />)
+    }
+
     const actorDropDownData = this.state.actors.map((item, index) => {
       return (<option
                 key={index}
@@ -24,6 +29,7 @@ class App extends Component {
               {item}
             </option>)
     })
+
     return (
       <div className='App'>
         <h1> This Week Movies </h1>
@@ -50,13 +56,8 @@ class App extends Component {
           })
         })
         let uniqueActors = [...new Set(actorsArray)]
-        console.log(uniqueActors)
-
         this.setState({ movies: res.data, actors: uniqueActors })
       })
-    if (this.state.movies === []) {
-      // loader
-    }
   }
 }
 

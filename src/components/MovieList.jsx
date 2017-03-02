@@ -4,7 +4,6 @@ import Movie from './Movie.jsx'
 class MovieList extends Component {
   render () {
     let filteredMovies = []
-    // All movies ka case handle kar
     if (this.props.filter === 'All') {
       filteredMovies = this.props.movies
     } else {

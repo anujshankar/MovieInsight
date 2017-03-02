@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import '../css/movie.css'
 const moment = require('moment')
+
 class Movie extends Component {
   render () {
     const theme = {
