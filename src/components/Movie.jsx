@@ -1,44 +1,42 @@
-import React, { Component } from 'react'
+import React from 'react'
 import '../css/movie.css'
 const moment = require('moment')
 const getRatingColor = require('../helperFunctions/ratingColorHelper')
 
-class Movie extends Component {
-  render () {
-    const theme = {
-      backgroundColor: this.props.theme,
-      width: 20,
-      height: 290
-    }
+const Movie = (props) => {
+  const theme = {
+    backgroundColor: props.theme,
+    width: 20,
+    height: 290
+  }
 
-    const actorsList = this.props.actors.map((item, index) => {
-      return <li key={index}>{item}</li>
-    })
+  const actorsList = props.actors.map((item, index) => {
+    return <li key={index}>{item}</li>
+  })
 
-    const ratingColor = getRatingColor(this.props.rating)
-    const ratingStyle = {
-      backgroundColor: ratingColor,
-      width: 30,
-      height: 30,
-      color: 'white'
-    }
+  const ratingColor = getRatingColor(props.rating)
+  const ratingStyle = {
+    backgroundColor: ratingColor,
+    width: 30,
+    height: 30,
+    color: 'white'
+  }
 
-    return (
+  return (
       <div className="movie">
         <div style={theme}></div>
         <div className="movie-data">
-          <h2>{this.props.name}</h2>
-          <p>{this.props.description}</p>
+          <h2>{props.name}</h2>
+          <p>{props.description}</p>
           <h3>Actors:</h3>
           <ul>
             {actorsList}
           </ul>
-          <p>Released On: {moment(this.props.releaseDate).format('Do MMMM YYYY')}</p>
+          <p>Released On: {moment(props.releaseDate).format('Do MMMM YYYY')}</p>
         </div>
-        <div style={ratingStyle}>{this.props.rating}/5</div>
+        <div style={ratingStyle}>{props.rating}/5</div>
       </div>
-    )
-  }
+  )
 }
 
 export default Movie

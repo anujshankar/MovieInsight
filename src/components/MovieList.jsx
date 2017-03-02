@@ -1,23 +1,22 @@
-import React, { Component } from 'react'
+import React from 'react'
 import Movie from './Movie.jsx'
 
-class MovieList extends Component {
-  render () {
-    let filteredMovies = []
-    if (this.props.filter === 'All') {
-      filteredMovies = this.props.movies
-    } else {
-      this.props.movies.forEach((element) => {
-        element.actors.forEach((actor) => {
-          if (actor === this.props.filter) {
-            filteredMovies.push(element)
-          }
-        })
+const MovieList = (props) => {
+  let filteredMovies = []
+  if (props.filter === 'All') {
+    filteredMovies = props.movies
+  } else {
+    props.movies.forEach((element) => {
+      element.actors.forEach((actor) => {
+        if (actor === props.filter) {
+          filteredMovies.push(element)
+        }
       })
-    }
+    })
+  }
 
-    const filteredMoviesList = filteredMovies.map((item) => {
-      return <Movie
+  const filteredMoviesList = filteredMovies.map((item) => {
+    return <Movie
                 key={item.id}
                 releaseDate={item.releaseDate}
                 name={item.name}
@@ -26,14 +25,13 @@ class MovieList extends Component {
                 theme={item.theme}
                 actors={item.actors}
              />
-    })
+  })
 
-    return (
+  return (
       <div className='movieList'>
         {filteredMoviesList}
       </div>
-    )
-  }
+  )
 }
 
 export default MovieList
