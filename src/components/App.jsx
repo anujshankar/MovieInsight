@@ -3,6 +3,7 @@ import MovieList from './MovieList.jsx'
 import loader from '../images/loader.svg'
 import '../css/app.css'
 const axios = require('axios')
+const getUniqueActors = require('../helperFunctions/uniqueActorHelper')
 
 class App extends Component {
   constructor () {
@@ -48,13 +49,7 @@ class App extends Component {
     axios.get('https://movie-api-atlrumqzze.now.sh/movies-ref')
       .then((res) => {
         const data = res.data
-        const actorsArray = []
-        data.forEach((element) => {
-          element.actors.forEach((actor) => {
-            actorsArray.push(actor)
-          })
-        })
-        const uniqueActors = [...new Set(actorsArray)]
+        const uniqueActors = getUniqueActors(data)
         this.setState({ movies: res.data, actors: uniqueActors })
       })
   }
